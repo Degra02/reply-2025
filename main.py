@@ -1,3 +1,6 @@
+import os
+import sys
+
 class Resource:
     def __init__(self, RI, RA, RP, RW, RM, RL, RU, RT, RE=None):
         self.RI = RI  # Resource identifier
@@ -50,7 +53,13 @@ def parse_input(file_path):
     return D, resources, turns
 
 
-D, resources, turns = parse_input("./inputs/0-demo.txt")
+        
+files = ['0-demo.txt', '1-thunberg.txt', '2-attenborough.txt', '3-goodall.txt', '4-maathai.txt', '5-carson.txt', '6-earle.txt', '7-mckibben.txt', '8-shiva.txt']
+
+
+file =  int(sys.argv[1]) if len(sys.argv) > 1 else 0
+D, resources, turns = parse_input("./inputs/"+files[file])
+
 print(f"Initial Budget: {D}")
 print("\nResources:")
 for resource in resources:
@@ -58,3 +67,5 @@ for resource in resources:
 print("\nTurns:")
 for turn in turns:
     print(f"Min Buildings: {turn.TM}, Max Buildings: {turn.TX}, Profit per Building: {turn.TR}")
+    
+print(f"File: {files[file]}")
