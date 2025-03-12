@@ -53,19 +53,18 @@ def parse_input(file_path):
     return D, resources, turns
 
 
+def parser(file=0):     
+    files = ['0-demo.txt', '1-thunberg.txt', '2-attenborough.txt', '3-goodall.txt', '4-maathai.txt', '5-carson.txt', '6-earle.txt', '7-mckibben.txt', '8-shiva.txt']
+
+    D, resources, turns = parse_input("./inputs/"+files[file])
+
+    print(f"Initial Budget: {D}")
+    print("\nResources:")
+    for resource in resources:
+        print(f"ID: {resource.RI}, Type: {resource.RT}, Activation Cost: {resource.RA}, Buildings Powered: {resource.RU} ")
+    print("\nTurns:")
+    for turn in turns:
+        print(f"Min Buildings: {turn.TM}, Max Buildings: {turn.TX}, Profit per Building: {turn.TR}")
         
-files = ['0-demo.txt', '1-thunberg.txt', '2-attenborough.txt', '3-goodall.txt', '4-maathai.txt', '5-carson.txt', '6-earle.txt', '7-mckibben.txt', '8-shiva.txt']
-
-
-file =  int(sys.argv[1]) if len(sys.argv) > 1 else 0
-D, resources, turns = parse_input("./inputs/"+files[file])
-
-print(f"Initial Budget: {D}")
-print("\nResources:")
-for resource in resources:
-    print(f"ID: {resource.RI}, Type: {resource.RT}, Activation Cost: {resource.RA}, Buildings Powered: {resource.RU} ")
-print("\nTurns:")
-for turn in turns:
-    print(f"Min Buildings: {turn.TM}, Max Buildings: {turn.TX}, Profit per Building: {turn.TR}")
-    
-print(f"File: {files[file]}")
+    print(f"File: {files[file]}")
+    return D, resources, turns
